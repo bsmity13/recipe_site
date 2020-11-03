@@ -1,0 +1,33 @@
+# Desserts {#dessert}
+
+Yum, dessert!
+
+```{r print dessert, results = "asis"}
+recs <- l$dessert
+
+for(i in 1:length(recs)){
+  
+  #Print recipe name
+  cat("\n## ", recs[[i]]$nice, "\n<hr>\n")  
+  
+  # #IF there is an image:
+  # if(length(img[[i]]!=0)){
+  #   #cat("\\hfill \\includegraphics[height=2in]{", img[[i]], "} \n  \n", sep="")
+  #   cat("\\HUGE ", nice[[i]], "\\normalsize \\hfill \\includegraphics[align=c, height=3in]{", img[[i]], "} \n  \n", sep="")
+  # } else {
+  #   cat("\\HUGE", nice[[i]], "\\normalsize")
+  # }
+
+  #Add a horizontal line
+  cat("\n<hr>\n")
+  
+  #Print ingredients
+  ingred.table <- kable(recs[[i]]$ingred, format = "html")
+    
+  cat("\n### Ingredients \n<br>\n", ingred.table, "\n\n")
+  
+  #Print Steps
+  cat("\n### Steps \n <br>\n", recs[[i]]$step.str, "\n  <br> \n")
+}
+
+```
